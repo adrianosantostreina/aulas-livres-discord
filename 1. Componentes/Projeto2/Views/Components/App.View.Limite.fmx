@@ -1,0 +1,71 @@
+object ComponentLimite: TComponentLimite
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 307
+  ClientWidth = 307
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object LytCard: TLayout
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 289.000000000000000000
+    Size.Height = 289.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object LytGeral: TLayout
+      Align = Client
+      Size.Width = 289.000000000000000000
+      Size.Height = 289.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object recBack: TRectangle
+        Align = Client
+        Fill.Color = xFF05F737
+        Size.Width = 289.000000000000000000
+        Size.Height = 289.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        object Label1: TLabel
+          Align = Top
+          StyledSettings = [Family, Style]
+          Margins.Top = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 289.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = 'Limite de Compras'
+          TabOrder = 0
+        end
+        object lblLimite: TLabel
+          Align = Client
+          StyledSettings = [Family, FontColor]
+          Size.Width = 289.000000000000000000
+          Size.Height = 252.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Center
+          Text = 'LblLimite'
+          TabOrder = 1
+          object Button1: TButton
+            Align = Bottom
+            Position.Y = 208.000000000000000000
+            Size.Width = 289.000000000000000000
+            Size.Height = 44.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 4
+            Text = 'Checar Limite'
+          end
+        end
+      end
+    end
+  end
+end
