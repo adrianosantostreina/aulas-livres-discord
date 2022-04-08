@@ -3,6 +3,7 @@ unit controllers.usuarios;
 interface
 
 uses
+
   Horse,
 
   ADRConn.DAO.Base,
@@ -11,11 +12,15 @@ uses
 
   dao.usuarios;
 
+
 procedure Registry;
 
 implementation
 
 uses
+
+  Service.Connection,
+
   DataSet.Serialize,
 
   System.JSON,
@@ -25,6 +30,7 @@ uses
 
 procedure DoList(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
+
   LDAO    : TADRConnDAOUsuario;
   LConn   : IADRConnection;
 begin
@@ -37,18 +43,22 @@ begin
       .Status(THTTPStatus.OK);
   finally
     LDAO.Free;
+
   end;
 end;
 
 procedure DoFind(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
+
   LDAO    : TADRConnDAOUsuario;
   LConn   : IADRConnection;
+
   LID: Integer;
 begin
   try
     if not TryStrToInt(Req.Params['id'] , LID) then
-      raise Exception.Create('ID inválido. Envie um número inteiro.');
+      raise Exception.Create('ID invÃ¡lido. Envie um nÃºmero inteiro.');
+
 
     LConn := TADRConnModelFactory.GetConnectionIniFile();
     LConn.Connect;
@@ -67,6 +77,7 @@ end;
 
 procedure Registry;
 begin
+
   THorse.Get   ('/usuarios'     , DoList);
   THorse.Get   ('/usuarios/:id' , DoFind);
 
@@ -77,4 +88,5 @@ end;
 
 
 end.
+
 

@@ -10,6 +10,7 @@
 			"failed": false,
 			"changed": false
 		},
+
 		"github.com/dliocode/horse-utils-clientip": {
 			"name": "horse-utils-clientip",
 			"version": "0.0.8",
