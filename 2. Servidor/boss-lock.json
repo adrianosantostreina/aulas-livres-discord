@@ -2,6 +2,15 @@
 	"hash": "d41d8cd98f00b204e9800998ecf8427e",
 	"updated": "2022-04-04T09:11:56.5755282-03:00",
 	"installedModules": {
+		"github.com/adrianosantostreina/adrconnection": {
+			"name": "adrconnection",
+			"version": "2.0.2",
+			"hash": "4d7b2e433c7964b2ac7967353905b973",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+
 		"github.com/dliocode/horse-utils-clientip": {
 			"name": "horse-utils-clientip",
 			"version": "0.0.8",

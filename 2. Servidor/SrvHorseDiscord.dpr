@@ -12,8 +12,8 @@ uses
   Horse.Logger.Provider.Console,
   System.JSON,
   System.SysUtils,
-  Service.Connection in 'services\Service.Connection.pas' {DM: TDataModule},
-  controllers.usuarios in 'controllers\controllers.usuarios.pas';
+  controllers.usuarios in 'controllers\controllers.usuarios.pas',
+  dao.usuarios in 'dao\dao.usuarios.pas';
 
 var
   LLogFileConfig: THorseLoggerConsoleConfig;
@@ -31,6 +31,12 @@ begin
     procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
     begin
       Res.Send('pong');
+    end);
+
+  THorse.Get('/healthcheck',
+    procedure(Req: THorseRequest; Res: THorseResponse; Next: TProc)
+    begin
+      Res.Send('Running');
     end);
 
   controllers.usuarios.Registry;
