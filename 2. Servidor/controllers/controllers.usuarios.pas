@@ -18,9 +18,6 @@ procedure Registry;
 implementation
 
 uses
-
-  Service.Connection,
-
   DataSet.Serialize,
 
   System.JSON,
