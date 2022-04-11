@@ -1,0 +1,30 @@
+{
+	"hash": "d41d8cd98f00b204e9800998ecf8427e",
+	"updated": "2022-04-02T09:34:57.6807004-03:00",
+	"installedModules": {
+		"github.com/academiadocodigo/router4delphi": {
+			"name": "router4delphi",
+			"version": "1.0.7",
+			"hash": "6d80dfbd1d8600dc82811853cd2d4919",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"github.com/viniciussanchez/dataset-serialize": {
+			"name": "dataset-serialize",
+			"version": "v2.4.0",
+			"hash": "f47b044fca0d9bb347f856798fb20cad",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"github.com/viniciussanchez/restrequest4delphi": {
+			"name": "restrequest4delphi",
+			"version": "v3.0.17",
+			"hash": "ea60c6bd97447cd2f162911082301dac",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		}
+	}
+}
