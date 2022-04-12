@@ -174,7 +174,6 @@
         </DelphiCompile>
         <DCCReference Include="controllers\controllers.usuarios.pas"/>
         <DCCReference Include="dao\dao.usuarios.pas"/>
-
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
