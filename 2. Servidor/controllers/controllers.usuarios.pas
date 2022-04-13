@@ -150,18 +150,19 @@ begin
   LConn   := TADRConnModelFactory.GetConnectionIniFile;
   LConn.Connect;
   LDAO   := TADRConnDAOUsuario.Create(LConn);
+
   try
     LResult := LDAO.Delete(LID);
     if LResult.Count > 0 then
       Res
         .Send<TJSONObject>(LResult)
-        .Status(THTTPStatus.Created)
+        .Status(THTTPStatus.NoContent)
     else
       Res
         .Send<TJSONObject>(LResult)
-        .Status(THTTPStatus.NoContent);
+        .Status(THTTPStatus.NotFound);
   finally
-    LDao.Free;
+    LDAO.Free;
   end;
 end;
 
