@@ -141,8 +141,49 @@ begin
 end;
 
 function TADRConnDAOUsuario.Delete(AID: Integer): TJSONObject;
+{$Region 'Select do Delete'}
+const
+  LSelect = 'SELECT ID, USUARIO, SENHA, TIPOUSUARIO, ATIVOINATIVO FROM USUARIOS WHERE ID = :pID';
+{$EndRegion}
+
+var
+  LDataset : TDataSet;
 begin
-  //
+  try
+    LDataSet :=
+      FQuery
+        .SQL(LSelect)
+        .ParamAsInteger('pID', AID)
+        .OpenDataSet;
+
+    try
+      //Exclusão Física
+      //if not LDataset.IsEmpty then
+      //  LDataset.Delete;
+
+      //Exclusão Lógica
+      LDataset.Edit;
+      LDataset.FieldByName('ativoinativo').AsString := 'I';
+      LDataset.Post;
+
+      //DataSetSerialize
+      //LDataset
+      //  .MergeFromJSONObject(JSON);
+      //{
+      //  "ïd":6,
+      //  "ativoinativo": "I"
+      //}
+
+      Result := LDataset.ToJSONObject;
+      //{
+      //  "id": AID
+      //}
+    except
+      Result := TJSONObject.Create;
+    end;
+  finally
+    LDataSet.Free;
+  end;
 end;
 
 

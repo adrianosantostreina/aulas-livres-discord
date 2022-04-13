@@ -138,8 +138,32 @@ begin
 end;
 
 procedure DoDelete(Req: THorseRequest; Res: THorseResponse; Next: TProc);
+var
+  LDAO    : TADRConnDAOUsuario;
+  LConn   : IADRConnection;
+  LResult : TJSONObject;
+  LID     : Integer;
 begin
-  //
+  if not TryStrToInt(Req.Params['id'] , LID) then
+    raise Exception.Create('ID inválido. Envie um número inteiro.');
+
+  LConn   := TADRConnModelFactory.GetConnectionIniFile;
+  LConn.Connect;
+  LDAO   := TADRConnDAOUsuario.Create(LConn);
+
+  try
+    LResult := LDAO.Delete(LID);
+    if LResult.Count > 0 then
+      Res
+        .Send<TJSONObject>(LResult)
+        .Status(THTTPStatus.NoContent)
+    else
+      Res
+        .Send<TJSONObject>(LResult)
+        .Status(THTTPStatus.NotFound);
+  finally
+    LDAO.Free;
+  end;
 end;
 
 procedure Registry;
@@ -148,6 +172,7 @@ begin
   THorse.Get   ('/usuarios/:id' , DoFind);
   THorse.Post  ('/usuarios'     , DoInsert);
   THorse.Put   ('/usuarios/:id' , DoUpdate);
+  THorse.Delete('/usuarios/:id' , DoDelete);
 end;
 
 end.
