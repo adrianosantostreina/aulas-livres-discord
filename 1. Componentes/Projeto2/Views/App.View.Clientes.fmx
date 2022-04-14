@@ -1,25 +1,82 @@
 inherited FrmClientes: TFrmClientes
   Caption = 'FrmTemplate1'
+  ClientHeight = 725
+  ClientWidth = 1219
   DesignerMasterStyle = 0
   inherited LytGeral: TLayout
+    Size.Width = 1219.000000000000000000
+    Size.Height = 725.000000000000000000
     object Layout1: TLayout
       Align = Client
-      Size.Width = 640.000000000000000000
-      Size.Height = 439.000000000000000000
+      Size.Width = 1219.000000000000000000
+      Size.Height = 684.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 2
       object lytInfo: TLayout
         Align = Left
         Size.Width = 544.000000000000000000
-        Size.Height = 439.000000000000000000
+        Size.Height = 684.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
+        object Memo1: TMemo
+          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+          DataDetectorTypes = []
+          Position.X = 8.000000000000000000
+          Position.Y = 38.000000000000000000
+          Size.Width = 528.000000000000000000
+          Size.Height = 239.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Viewport.Width = 524.000000000000000000
+          Viewport.Height = 235.000000000000000000
+        end
+        object Request: TButton
+          Position.X = 8.000000000000000000
+          Position.Y = 8.000000000000000000
+          TabOrder = 1
+          Text = 'Request'
+          OnClick = RequestClick
+        end
+        object StringGrid1: TStringGrid
+          CanFocus = True
+          ClipChildren = True
+          Position.X = 8.000000000000000000
+          Position.Y = 288.000000000000000000
+          Size.Width = 529.000000000000000000
+          Size.Height = 385.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Viewport.Width = 509.000000000000000000
+          Viewport.Height = 360.000000000000000000
+        end
+        object Button2: TButton
+          Position.X = 552.000000000000000000
+          Position.Y = 343.000000000000000000
+          Size.Width = 145.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          Text = 'Dataset to Json'
+          OnClick = Button2Click
+        end
+      end
+      object Memo2: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Position.X = 552.000000000000000000
+        Position.Y = 384.000000000000000000
+        Size.Width = 659.000000000000000000
+        Size.Height = 292.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Viewport.Width = 655.000000000000000000
+        Viewport.Height = 288.000000000000000000
       end
     end
     object Label1: TLabel
       Align = Top
       StyledSettings = [Family, FontColor]
-      Size.Width = 640.000000000000000000
+      Size.Width = 1219.000000000000000000
       Size.Height = 41.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 30.000000000000000000
@@ -34,6 +91,59 @@ inherited FrmClientes: TFrmClientes
       TabOrder = 1
       Text = 'Button1'
       OnClick = Button1Click
+    end
+  end
+  object MemUsuarios: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 584
+    Top = 96
+    object MemUsuariosid: TIntegerField
+      FieldName = 'id'
+    end
+    object MemUsuariosusuario: TStringField
+      FieldName = 'usuario'
+      Size = 30
+    end
+    object MemUsuariossenha: TStringField
+      FieldName = 'senha'
+      Size = 30
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = MemUsuarios
+    ScopeMappings = <>
+    Left = 376
+    Top = 352
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 236
+    Top = 549
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGrid1
+      Columns = <
+        item
+          MemberName = 'id'
+          ReadOnly = False
+          Visible = True
+        end
+        item
+          MemberName = 'usuario'
+          Width = 150
+        end
+        item
+          MemberName = 'senha'
+          Width = 60
+        end>
     end
   end
 end
